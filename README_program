@@ -1,0 +1,93 @@
+###----README for carbosecstruc programe----##
+
+#############################################
+To compile use C++11 compiler:
+
+>g++ -std=c++0x carbosecstruc.cpp -o carbosecstruc
+#############################################
+
+#############################################
+To print HELP do:
+>carbosecstruc
+or
+>carbosecstruc --help
+
+-----HELP----
+Usage: carbosecstruc [OPTION] FILES
+
+  -t        transform cnf file to angular file
+  -m        make cnf file from angular file
+  -test     option to test conversion cartesian->angular->cartesian
+  -test2    option to test conversion angular->cartesian->angular
+  -help    to display info
+  -helix  to calculate ramachandran plot of helix parameters
+  -disacch to calculate ramachandran plot of various parameters for disacharides
+           variation of alpha and bete epimery possible
+
+EXAMLPES:
+ ./carbosecstruc -t      source.cnf    template.tpl  anglefile.opt
+ ./carbosecstruc -m      anglefile.opt template.tpl  output.cnf [change file optional] [changed angle file optional]
+ ./carbosecstruc -test   source.cnf    template.tpl  anglefile.opt output.cnf
+ ./carbosecstruc -test2  source.ang    template.tpl  output.cnf output.ang
+ ./carbosecstruc -helix GLC.ang phex.tpl 5 GLC 4 beta
+ ./carbosecstruc -disacch disacch.ang phex.tpl 5 dissach_name linkNo
+ ./carbosecstruc -disacch lib_disacch/GlcA3AllB.ang phex.tpl 30 GlcA3AllB 3
+#############################################
+
+#############################################
+----CHANGE FILE----
+lines starting with "#" are not read by program
+each line is single change
+number of spaces between flags has to be >= 1
+
+------------------
+To change PHY or PSY:
+<phi or psi> <linkage number (1 for first)> <value in deg 0-360>
+------------------
+phi 1 300
+psi 5 180
+------------------
+
+------------------
+To change all PHY or all PSY:
+<allphi or allpsi>  <value in deg 0-360>
+------------------
+allphi 300
+allpsi 180
+------------------
+
+------------------
+To change enantiomer:
+<ena> <residue number (1 for first)> <exocyclic atom name atached to chiral carbon O1, O2, O3, O4, C6> <flag defining orientation using haworth projection "up" the ring or "down" the ring>
+------------------
+ena 2 O2 up
+------------------
+
+------------------
+To change exocyclic rotamers:
+<rot> <residue number (1 for first)> <for chi: "ch2", "ch3", "ch4", "ch6"; for omega: "o"; for omega tilde: "ot" > <value in deg 0-360>
+(NOTE:better to use "ot" then "o", "o" is recalculated to "ot" +-120)
+------------------
+rot 1 ch4 220
+------------------
+
+------------------
+To change ring conformation:
+<ring> <residue number (1 for first)> <flag for conformation: "4C1", "1C4" >
+------------------
+ring 3 4C1
+------------------
+------------------
+To add residue :
+<add> <residue number to add (taken from the existing chain)> <linkage (1-?) possible:{1,2,3,4,6} > <number of resisues to be added>
+------------------
+add 2 4 10
+------------------
+
+------------------
+To delete residue :
+<del> <number of residues to be removed from reducing end>
+------------------
+del 3
+------------------
+#############################################
