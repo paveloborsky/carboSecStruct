@@ -1,6 +1,7 @@
 # carboSecStruct
 
 carbosecstruc.cpp    # the program for glycosidic linkage conformation prediction
+
 README_program       # info for the program       
 
 # Libraries
@@ -9,7 +10,9 @@ it can be constructed easily using the program but may be it might be usefull
 see the scripts inside to see how to construct the saccharides
 
 lib
+
 lib_disacch
+
 lib_disacch_simplerules
 
 
